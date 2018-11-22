@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { auth } from './firebase';
 import './CurrentUser.css';
 
@@ -13,12 +14,17 @@ const CurrentUser = ({ user }) => {
       <div className="CurrentUser--identification">
         <h3 className="CurrentUser--displayName">{ user.displayName }</h3>
         <p className="CurrentUser--email">{ user.email }</p>
-        <button
+        <button 
           className="CurrentUser--signout"
-          onClick={() => auth.signOut()}
-        >
+          onClick={() => {
+            auth.signOut();
+            console.log("Signed Out");
+            }
+          }
+          >
           Sign Out
         </button>
+          {/* {console.log(this.props.user)} */}
       </div>
     </div>
   );
